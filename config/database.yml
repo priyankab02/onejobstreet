@@ -5,4 +5,4 @@ development:
   database: onejobstreet_development
   pool:     5
   username: postgres
-  password: postgres
+  password: root
