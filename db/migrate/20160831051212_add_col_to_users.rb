@@ -7,8 +7,7 @@ class AddColToUsers < ActiveRecord::Migration
     add_column :users, :highest_education, :string
     add_column :users, :current_job_title, :string
     add_column :users, :employee_type, :string
-    add_column :users, :total_experience_years, :integer
-    add_column :users, :total_experience_months, :integer
+    add_column :users, :total_experience, :integer
     add_column :users, :desired_job_title, :string
     add_column :users, :job_type, :string
     add_column :users, :current_salary, :integer
