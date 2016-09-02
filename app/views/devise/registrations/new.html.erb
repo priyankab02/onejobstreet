@@ -60,10 +60,11 @@
 
   <!-- highest education -->
   <div class="field">
-    <%= f.label "Highest Education" %><br />
-    <%#= f.text_field :highest_education, autofocus: true %>
-    <%= f.select(:highest_education, options_for_select([["Some Secondary School Coursework", "Some Secondary School Coursework"], ["Secondary School or equivalent", "Secondary School or equivalent"], ["'A' Level/Higher or Equivalent", "'A' Level/Higher or Equivalent"], ["Vocational", "Vocational"], ["Some College Coursework Completed", "Some College Coursework Completed"], ["HND/HNC or equivalent", "HND/HNC or equivalent"], ["Bachelor's Degree", "Bachelor's Degree"], ["Master's Degree","Master's Degree"], ["Doctorate", "Doctorate"], ["Professional", "Professional"]]), {:prompt => "--Select Highest Education--"}) %>
+    <%= f.label "Highest Education" %><br /> 
+    <%= f.text_field :highest_education, autofocus: true, :id=>"other_education", :style => "display:none;" %>
+    <%= f.select(:highest_education, options_for_select([["A-level", "A-level"], ["GCSE", "GCSE"], ["Master's degree", "Master's degree"], ["Other", "Other"], ["PhD", "PhD"], ["University degree", "University degree"]]), {:prompt => "--Select Highest Education--"}) %>
   </div>
+
   <!-- options_for_select([["Dollar", "$"], ["Kroner", "DKK"]]) -->
 
   <!-- current job title -->
@@ -76,13 +77,15 @@
   <div class="field">
     <%= f.label "Employee" %><br />
     <%#= f.text_field :employee_type, autofocus: true %>
-    <%= f.select(:employee_type, options_for_select([["Current Career Level","Current Career Level"], ["None of these", "None of these"], ["Student (Higher education/Graduate)", "Student (Higher education/Graduate)"], ["Entry Level", "Entry Level"], ["Experienced (Non-Manager)", "Experienced (Non-Manager)"], ["Manager (Manager/Supervisor of Staff)", "Manager (Manager/Supervisor of Staff)"], ["Executive (Director, Department Head)", "Executive (Director, Department Head)"], ["Senior Executive (Chairman, MD, CEO)", "Senior Executive (Chairman, MD, CEO)"]]), {:prompt => "--Select Employee Type--"}) %>
+    <%= f.select(:employee_type, options_for_select([["Fresher","Fresher"],["Experienced","Experienced"], ["Freelancer", "Freelancer"]]), {:prompt => "--Select Employee Type--"}) %>
+<!-- # options_for_select([["Current Career Level","Current Career Level"], ["None of these", "None of these"], ["Student (Higher education/Graduate)", "Student (Higher education/Graduate)"], ["Entry Level", "Entry Level"], ["Experienced (Non-Manager)", "Experienced (Non-Manager)"], ["Manager (Manager/Supervisor of Staff)", "Manager (Manager/Supervisor of Staff)"], ["Executive (Director, Department Head)", "Executive (Director, Department Head)"], ["Senior Executive (Chairman, MD, CEO)", "Senior Executive (Chairman, MD, CEO)"]]), {:prompt => "--Select Employee Type--"}) -->
  </div>
 
   <!-- total years of experience -->
   <div class="field">
     <%= f.label "Total Years Of Experience" %><br />
-    <%= f.text_field :total_experience, autofocus: true %>
+    <%= f.text_field :total_experience_years %> Year(s)
+    <%= f.text_field :total_experience_months %> Month(s)
   </div>
 
   <!-- desired job title -->
@@ -101,7 +104,7 @@
   <!-- current_salary -->
   <div class="field">
     <%= f.label "Current Salary" %><br />
-    <%= f.text_field :current_salary, :id=>"ex1", "data-slider-id"=>"ex1Slider", :type=>"text", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"1", "data-slider-value"=>"10" %>
+    <%= f.text_field :current_salary, :id=>"ex1", "data-slider-id"=>"ex1Slider", :type=>"text", "data-slider-min"=>"0", "data-slider-max"=>"100", "data-slider-step"=>"10", "data-slider-value"=>"10" %>
     <!-- <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/> -->
   </div>
 <!-- <input id="ex1" data-slider-id='ex1Slider' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" data-slider-value="14"/> -->
@@ -110,7 +113,9 @@
   <div class="field">
     <%= f.label "Willing To Travel (miles)" %>
     <%#= f.text_field :wiling_to_travel, autofocus: true %>
-    <%= f.check_box :wiling_to_travel %>
+    <%#= f.check_box :wiling_to_travel %>
+    <%= f.link_to "Yes", "", :type=>"button", :class=>"btn btn-default", :value => true %>
+    <%= f.link_to "No", "", :type=>"button", :class=>"btn btn-default", :value => false %>
     <%#= f.check_box :wiling_to_travel %>
   </div>  
 
@@ -138,9 +143,17 @@
   $(document).ready(function(){
     $('#ex1').slider({
       formatter: function(value) {
-        return 'Current value: ' + value;
+        // alert("Hello there.\nI am on a second line ;-)")
+        // return 'Per Month: ' + value + 'k';
+        return 'Per Year: ' + value*12 + 'k ' + "&" + ' Per Month: ' + value + 'k';
       }
-    });    
+    });
+    $("#user_highest_education").on("change",function(){
+      if ($(this).val() == "Other") {
+        $("#other_education").show();
+        $("#user_highest_education").hide();
+      };
+    });   
   });
 </script>
 

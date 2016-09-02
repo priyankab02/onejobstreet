@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
-   
+  validates :first_name, :last_name, :username, :city, :current_location, :phone, :highest_education, :current_job_title, :employee_type, :total_experience_years, :total_experience_months, :desired_job_title, :job_type, :current_salary, :terms_and_conditions, presence: true
+  validates_format_of :phone, :with => /\A[0-9 -]+\Z/
+  # validates_format_of :first_name, :last_name, :username, :with => /\A[a-b]+\Z/
 
 	def self.from_omniauth(auth)
 		email = auth.info.email.present? ? auth.info.email : "#{auth.uid}@gmail.com"
