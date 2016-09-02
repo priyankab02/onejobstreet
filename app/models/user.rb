@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauth_providers => [:facebook, :google_oauth2, :linkedin]
 
+   
+
 	def self.from_omniauth(auth)
 		email = auth.info.email.present? ? auth.info.email : "#{auth.uid}@gmail.com"
 		user_exist = User.find_by_email(email)

@@ -3,13 +3,31 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <!-- FN -->
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label "First Name" %><br />
+    <%= f.text_field :first_name, autofocus: true %>
+  </div>
+
+  <!-- LN -->
+  <div class="field">
+    <%= f.label "Last Name" %><br />
+    <%= f.text_field :last_name, autofocus: true %>
+  </div>
+
+  <!-- UN -->
+  <div class="field">
+    <%= f.label "User Name" %><br />
+    <%= f.text_field :username, autofocus: true %>
+  </div>
+
+  <div class="field">
+    <%= f.label "Email ID" %><br />
     <%= f.email_field :email, autofocus: true %>
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    <%= f.label "Password" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -17,12 +35,90 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label "Password Confirmation" %><br />
     <%= f.password_field :password_confirmation, autocomplete: "off" %>
   </div>
 
+  <!-- city -->
+  <div class="field">
+    <%= f.label "City" %><br />
+    <%= f.text_field :city, autofocus: true %>
+  </div>
+
+  <!-- current location -->
+  <div class="field">
+    <%= f.label "Current_ Location" %><br />
+    <%= f.text_field :current_location, autofocus: true %>
+  </div>
+
+  <!-- phone -->
+  <div class="field">
+    <%= f.label "Phone" %><br />
+    <%= f.text_field :phone, autofocus: true %>
+  </div>
+
+  <!-- highest education -->
+  <div class="field">
+    <%= f.label "Highest Education" %><br />
+    <%= f.text_field :highest_education, autofocus: true %>
+  </div>
+
+  <!-- current job title -->
+  <div class="field">
+    <%= f.label "Job Title (current)" %><br />
+    <%= f.text_field :current_job_title, autofocus: true %>
+  </div>
+
+  <!-- Employee -->
+  <div class="field">
+    <%= f.label "Employee" %><br />
+    <%= f.text_field :employee_type, autofocus: true %>
+ </div>
+
+  <!-- total years of experience -->
+  <div class="field">
+    <%= f.label "Total Years Of Experience" %><br />
+    <%= f.text_field :total_experience, autofocus: true %>
+  </div>
+
+  <!-- desired job title -->
+  <div class="field">
+    <%= f.label "Job Title (desired): Tags" %><br />
+    <%= f.text_field :desired_job_title, autofocus: true %>
+  </div>
+
+  <!-- Job Type -->
+  <div class="field">
+    <%= f.label "Job Type" %><br />
+    <%= f.text_field :job_type, autofocus: true %>
+  </div>
+
+  <!-- current_salary -->
+  <div class="field">
+    <%= f.label "Current Salary" %><br />
+    <%= f.text_field :current_salary, autofocus: true %>
+  </div>  
+
+  <!-- wiling_to_travel -->
+  <div class="field">
+    <%= f.label "Willing To Travel (miles)" %><br />
+    <%= f.text_field :wiling_to_travel, autofocus: true %>
+  </div>  
+
+  <!-- eligibility to work in UK -->
+  <!-- <div class="field"> -->
+    <!-- <%#= f.label :wiling_to_travel %><br /> -->
+    <%#= f.text_field :wiling_to_travel, autofocus: true %>
+  <!-- </div> -->
+
+  <!-- Accept terms and conditions -->
+  <!-- <div class="field"> -->                                                                                                                                                                                                                                           
+    <!-- <%#= f.label :wiling_to_travel %><br /> -->
+    <%#= f.text_field :wiling_to_travel, autofocus: true %>
+  <!-- </div> -->
+
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Register" %>
   </div>
 <% end %>
 

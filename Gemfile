@@ -30,6 +30,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-linkedin-oauth2'    # for linkedin
 gem 'omniauth-oauth2', '~> 1.3.1' # for linkedin
+gem 'city-state'
+gem 'bootstrap-slider-rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
