@@ -29,7 +29,7 @@
   <div class="field">
     <%= f.label "Password" %>
     <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "off" %>
   </div>
@@ -78,7 +78,7 @@
     <%= f.label "Employee" %><br />
     <%#= f.text_field :employee_type, autofocus: true %>
     <%= f.select(:employee_type, options_for_select([["Fresher","Fresher"],["Experienced","Experienced"], ["Freelancer", "Freelancer"]]), {:prompt => "--Select Employee Type--"}) %>
-<!-- # options_for_select([["Current Career Level","Current Career Level"], ["None of these", "None of these"], ["Student (Higher education/Graduate)", "Student (Higher education/Graduate)"], ["Entry Level", "Entry Level"], ["Experienced (Non-Manager)", "Experienced (Non-Manager)"], ["Manager (Manager/Supervisor of Staff)", "Manager (Manager/Supervisor of Staff)"], ["Executive (Director, Department Head)", "Executive (Director, Department Head)"], ["Senior Executive (Chairman, MD, CEO)", "Senior Executive (Chairman, MD, CEO)"]]), {:prompt => "--Select Employee Type--"}) -->
+<!-- # options_for_select([["Current Career Level","Current Career Level"], ["None of these", "None of these"], ["Student (Higher education/Graduate)", "Student (Higher education/Graduate)"], ["Entry Level", "Entry Level"], ["Experienced (Non-Manager)", "Experienced (Non-Manager)"], ["Manager (Manager/Supervisor of Staff)", "Manager (Manager/Supervisor of Staff)"], ["Executive (Director, Department Head)", "Executive (Director, Department Head)"], ["Senior Executive (Chairman, MD, CEO)", "Senior Executive (Chairman, MD, CEO)"]]), {:prompt => "Select Employee Type"}) -->
  </div>
 
   <!-- total years of experience -->
@@ -114,16 +114,16 @@
     <%= f.label "Willing To Travel (miles)" %>
     <%#= f.text_field :wiling_to_travel, autofocus: true %>
     <%#= f.check_box :wiling_to_travel %>
-    <%= f.link_to "Yes", "", :type=>"button", :class=>"btn btn-default", :value => true %>
-    <%= f.link_to "No", "", :type=>"button", :class=>"btn btn-default", :value => false %>
+    <%= f.link_to "Yes", "", :class=>"btn btn-default", :value => true %>
+    <%= f.link_to "No", "", :class=>"btn btn-default", :value => false %>
     <%#= f.check_box :wiling_to_travel %>
   </div>  
 
   <!-- eligibility to work in UK -->
-  <!-- <div class="field"> -->
-    <!-- <%#= f.label :wiling_to_travel %><br /> -->
-    <%#= f.text_field :wiling_to_travel, autofocus: true %>
-  <!-- </div> -->
+  <div class="field">
+    <%= f.label "Eligibility To Work In UK ?" %> &nbsp;&nbsp;
+    <%= f.select(:eligibility_for_uk, options_for_select([]), {:prompt => "--Select--"}) %>
+  </div>
 
   <!-- Accept terms and conditions -->
   <div class="field">                           
@@ -152,6 +152,9 @@
       if ($(this).val() == "Other") {
         $("#other_education").show();
         $("#user_highest_education").hide();
+        var other_value = $("#other_education").val();
+        alert(other_value);
+        $("#user_highest_education").val(other_value);
       };
     });   
   });
